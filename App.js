@@ -16,6 +16,7 @@ import Step1 from './screens/step1';
 import Step2 from './screens/step2';
 import Step3 from './screens/step3';
 import Step4 from './screens/step4';
+import Dashboard from './screens/Dashboard';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -48,7 +49,7 @@ function HomeStack({ navigation }) {
   );
 }
 
-// Seller Page Stack with Steps
+// Seller Page Stack with Steps and Dashboard
 function SellerStack({ navigation }) {
   return (
     <Stack.Navigator
@@ -108,6 +109,19 @@ function SellerStack({ navigation }) {
           ),
         })}
       />
+      <Stack.Screen 
+  name="Dashboard" 
+  component={Dashboard} 
+  options={({ navigation }) => ({
+    title: 'Dashboard',
+    headerLeft: () => (
+      <Pressable onPress={() => navigation.navigate('SellerPage')} style={{ paddingRight: 10 }}>
+        <Ionicons name="arrow-back" size={24} color='#ffffff' />
+      </Pressable>
+    ),
+  })}
+/>
+
     </Stack.Navigator>
   );
 }
@@ -136,7 +150,7 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator
         screenOptions={{
-          headerShown: false, // Hide header for drawer screens, manage it inside stack
+          headerShown: false, // Manage header inside stack
         }}
       >
         <Drawer.Screen name="Home" component={HomeStack} />

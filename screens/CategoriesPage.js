@@ -7,15 +7,15 @@ const categories = [
   { id: '1', name: 'Grains', image: require('../assets/images/categories/Grains.png') },
   { id: '2', name: 'Fruits', image: require('../assets/images/categories/Fruits.png') },
   { id: '3', name: 'Vegetables', image: require('../assets/images/categories/vegetables_2.png') },
-  { id: '4', name: 'Dry Fruits', image: require('../assets/images/categories/Dry_fruits.png') },
-  { id: '5', name: 'Exotic Fruits', image: require('../assets/images/categories/Exotic_Fruits.png') },
-  { id: '6', name: 'Dairy Products', image: require('../assets/images/categories/Dairy_.png') },
-  { id: '7', name: 'Honey', image: require('../assets/images/categories/Honey.png') },
+  // { id: '4', name: 'Dry Fruits', image: require('../assets/images/categories/Dry_fruits.png') },
+  // { id: '5', name: 'Exotic Fruits', image: require('../assets/images/categories/Exotic_Fruits.png') },
+  // { id: '6', name: 'Dairy Products', image: require('../assets/images/categories/Dairy_.png') },
+  // { id: '7', name: 'Honey', image: require('../assets/images/categories/Honey.png') },
   { id: '8', name: 'Flowers', image: require('../assets/images/categories/Flowers.png')  },
-  { id: '9', name: 'Animal Food' },
-  { id: '10', name: 'Medicinal Plants', image: require('../assets/images/categories/Medicinal_Plants.png') },
+  // { id: '9', name: 'Animal Food' },
+  // { id: '10', name: 'Medicinal Plants', image: require('../assets/images/categories/Medicinal_Plants.png') },
   { id: '11', name: 'Spices and Herbs',  image: require('../assets/images/categories/Spices.png')},
-  { id: '12', name: 'Poultry Products', image: require('../assets/images/categories/Poultry.png') },
+  // { id: '12', name: 'Poultry Products', image: require('../assets/images/categories/Poultry.png') },
 ];
 
 const numColumns = 3;

@@ -40,10 +40,11 @@ const SellerPage = ({ navigation, route }) => {
           <Icon name="view-grid-outline" size={24} color="#3b5998"/>
           <Text style={styles.footerText}>Catalogue</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.footerButton}>
+        <TouchableOpacity onPress={() => navigation.navigate('Dashboard')} style={styles.footerButton}>
           <Icon name="chart-bar" size={24} color="#3b5998" />
           <Text style={styles.footerText}>Dashboard</Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.footerButton}>
           <Icon name="chat-outline" size={24} color="#3b5998" />
           <Text style={styles.footerText}>Chats</Text>
