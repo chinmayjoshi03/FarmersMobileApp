@@ -28,7 +28,7 @@ function HomeStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#228B22' },
+        headerStyle: { backgroundColor: '#96d406' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
         headerLeft: () => (
           <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
@@ -42,7 +42,7 @@ function HomeStack({ navigation }) {
         ),
       }}
     >
-      <Stack.Screen name="Home" component={HomePage} options={{ title: 'Welcome' }} />
+      <Stack.Screen name="Home" component={HomePage} options={{ title: "Welcome" }} />
       <Stack.Screen name="About" component={AboutPage} />
       <Stack.Screen name="Cart" component={Cart} />
       <Stack.Screen name="Profile" component={ProfilePage} />
@@ -57,7 +57,7 @@ function SellerStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#228B22' },
+        headerStyle: { backgroundColor: '#8cbe2c' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
       }}
     >
@@ -160,7 +160,7 @@ function SettingsStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#228B22' },
+        headerStyle: { backgroundColor: '#96d406' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
         headerLeft: () => (
           <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
@@ -182,9 +182,9 @@ export default function App() {
           headerShown: false, // Manage header inside stack
         }}
       >
-        <Drawer.Screen name="Home" component={HomeStack} />
-        <Drawer.Screen name="Settings" component={SettingsStack} />
-        <Drawer.Screen name="SellerPage" component={SellerStack} />
+        <Drawer.Screen name="Home" component={HomeStack} options={{drawerActiveBackgroundColor:'#c6ff89',drawerActiveTintColor:'#498e00'}}/>
+        <Drawer.Screen name="Settings" component={SettingsStack} options={{drawerActiveBackgroundColor:'#c6ff89',drawerActiveTintColor:'#498e00'}}/>
+        <Drawer.Screen name="SellerPage" component={SellerStack} options={{drawerActiveBackgroundColor:'#c6ff89',drawerActiveTintColor:'#498e00'}}/>
       </Drawer.Navigator>
     </NavigationContainer>
   );

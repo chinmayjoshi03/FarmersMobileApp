@@ -7,7 +7,7 @@ export default function Cart({ navigation }) {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
-                <Text style={styles.title}>Welcome to the Cart</Text>
+                <Text style={styles.title}>Welcome to the </Text>
             </View>
             <Footer navigation={navigation} />
         </SafeAreaView>

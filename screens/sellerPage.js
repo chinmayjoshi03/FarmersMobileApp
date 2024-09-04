@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity, FlatList } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const SellerPage = ({ navigation, route }) => {
@@ -36,25 +37,28 @@ const SellerPage = ({ navigation, route }) => {
         keyExtractor={(item, index) => index.toString()}
         ListEmptyComponent={<Text style={styles.emptyMessage}>No items available. Add new items to see them here.</Text>}
       />
-      <Button title="Add New Item" onPress={() => navigation.navigate('Step1')} />
+      <TouchableOpacity style={styles.addNewItem} title="Add New Item" onPress={() => navigation.navigate('Step1')}>
+        <Text style={styles.editButtonText}>ADD NEW ITEM</Text>
+      </TouchableOpacity>
+      
       {/* Footer */}
       <View style={styles.footer}>
         <TouchableOpacity style={styles.footerButton}>
-          <Icon name="view-grid-outline" size={24} color="#3b5998"/>
+          <Icon name="view-grid-outline" size={24} color='#96d406'/>
           <Text style={styles.footerText}>Catalogue</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Dashboard')} style={styles.footerButton}>
-          <Icon name="chart-bar" size={24} color="#3b5998" />
+          <Icon name="chart-bar" size={24} color='#96d406' />
           <Text style={styles.footerText}>Dashboard</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.footerButton}>
-          <Icon name="chat-outline" onPress={() => navigation.navigate('Chats')} size={24} color="#3b5998" />
+          <Icon name="chat-outline" size={24} color="#3b5998" />
           <Text style={styles.footerText}>Chats</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Transactions')} style={styles.footerButton}>
+        <TouchableOpacity style={styles.footerButton}>
           <Icon name="account-outline" size={24} color="#3b5998" />
-          <Text style={styles.footerText}>Transactions</Text>
+          <Text style={styles.footerText}>Profile</Text>
         </TouchableOpacity>
 
       </View>
@@ -112,16 +116,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#2a9d8f',
   },
-  emptyMessage: {
-    fontSize: 16,
-    color: '#999',
-    textAlign: 'center',
-    marginTop: 20,
-  },
   footer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    paddingTop: 12,
+    paddingTop:12,
     borderTopWidth: 1,
     borderTopColor: '#ccc',
   },
@@ -129,7 +127,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   footerText: {
-    color: "#3b5998",
+    color: '#96d406',
     fontSize: 12,
     marginTop: 4,
   },
