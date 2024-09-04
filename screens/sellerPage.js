@@ -52,13 +52,13 @@ const SellerPage = ({ navigation, route }) => {
           <Text style={styles.footerText}>Dashboard</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.footerButton}>
-          <Icon name="chat-outline" size={24} color="#3b5998" />
+        <TouchableOpacity onPress={() => navigation.navigate('Chats')} style={styles.footerButton}>
+          <Icon name="chat-outline" size={24} color="#96d406" />
           <Text style={styles.footerText}>Chats</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.footerButton}>
-          <Icon name="account-outline" size={24} color="#3b5998" />
-          <Text style={styles.footerText}>Profile</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Transactions')} style={styles.footerButton}>
+        <Icon name="credit-card-outline"  size={24} color="#96d406" />
+          <Text style={styles.footerText}>Transactions</Text>
         </TouchableOpacity>
 
       </View>
