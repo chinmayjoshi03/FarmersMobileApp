@@ -7,15 +7,8 @@ const categories = [
   { id: '1', name: 'Grains', image: require('../assets/images/categories/Grains.png') },
   { id: '2', name: 'Fruits', image: require('../assets/images/categories/Fruits.png') },
   { id: '3', name: 'Vegetables', image: require('../assets/images/categories/vegetables_2.png') },
-  // { id: '4', name: 'Dry Fruits', image: require('../assets/images/categories/Dry_fruits.png') },
-  // { id: '5', name: 'Exotic Fruits', image: require('../assets/images/categories/Exotic_Fruits.png') },
-  // { id: '6', name: 'Dairy Products', image: require('../assets/images/categories/Dairy_.png') },
-  // { id: '7', name: 'Honey', image: require('../assets/images/categories/Honey.png') },
-  { id: '8', name: 'Flowers', image: require('../assets/images/categories/Flowers.png')  },
-  // { id: '9', name: 'Animal Food' },
-  // { id: '10', name: 'Medicinal Plants', image: require('../assets/images/categories/Medicinal_Plants.png') },
-  { id: '11', name: 'Spices and Herbs',  image: require('../assets/images/categories/Spices.png')},
-  // { id: '12', name: 'Poultry Products', image: require('../assets/images/categories/Poultry.png') },
+  { id: '4', name: 'Flowers', image: require('../assets/images/categories/Flowers.png')  },
+  { id: '5', name: 'Spices and Herbs',  image: require('../assets/images/categories/Spices.png')},
 ];
 
 const numColumns = 3;
@@ -31,16 +24,19 @@ export default function HomePage({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Header */}
-     
-
       {/* Search Bar */}
       <View style={styles.searchBarContainer}>
-        <Ionicons name="search-outline" size={24} color="#ccc" style={styles.searchIcon} />
+        <Ionicons name="search-outline" size={24} color="#96d406" style={styles.searchIcon} />
         <TextInput
           style={styles.searchBar}
           placeholder="Search for products, brands, and more"
         />
+      </View>
+
+      {/* Address */}
+      <View style={styles.address}>
+        <Ionicons name="location-outline" size={20} color="#96d406" style={styles.locationIcon} />
+        <Text style={styles.addressText}>Hinjewadi, Pune-411057</Text>
       </View>
 
       {/* Categories List */}
@@ -63,16 +59,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f5f5f5',
   },
-  header: {
-    backgroundColor: '#3b5998',
-    padding: 15,
-  },
-  headerText: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
   searchBarContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -92,6 +78,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderColor: '#ddd',
     borderWidth: 1,
+  },
+  address: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 15,
+    marginBottom: 10,
+  },
+  locationIcon: {
+    marginRight: 5,
+  },
+  addressText: {
+    color: "#96d406",
+    fontSize: 16,
   },
   categoriesList: {
     padding: 10,

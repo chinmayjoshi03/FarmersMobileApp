@@ -26,7 +26,7 @@ function HomeStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#228B22' },
+        headerStyle: { backgroundColor: '#96d406' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
         headerLeft: () => (
           <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
@@ -40,7 +40,7 @@ function HomeStack({ navigation }) {
         ),
       }}
     >
-      <Stack.Screen name="Home" component={HomePage} options={{ title: 'Welcome' }} />
+      <Stack.Screen name="Home" component={HomePage} options={{ title: "Welcome" }} />
       <Stack.Screen name="About" component={AboutPage} />
       <Stack.Screen name="Cart" component={Cart} />
       <Stack.Screen name="Profile" component={ProfilePage} />
@@ -54,7 +54,7 @@ function SellerStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#228B22' },
+        headerStyle: { backgroundColor: '#8cbe2c' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
       }}
     >
