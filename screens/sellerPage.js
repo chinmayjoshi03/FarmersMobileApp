@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity, FlatList } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const SellerPage = ({ navigation, route }) => {
@@ -33,24 +34,27 @@ const SellerPage = ({ navigation, route }) => {
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
       />
-      <Button title="Add New Item" onPress={() => navigation.navigate('Step1')} />
+      <TouchableOpacity style={styles.addNewItem} title="Add New Item" onPress={() => navigation.navigate('Step1')}>
+        <Text style={styles.editButtonText}>ADD NEW ITEM</Text>
+      </TouchableOpacity>
+      
       {/* Footer */}
       <View style={styles.footer}>
         <TouchableOpacity style={styles.footerButton}>
-          <Icon name="view-grid-outline" size={24} color="#3b5998"/>
+          <Icon name="view-grid-outline" size={24} color='#96d406'/>
           <Text style={styles.footerText}>Catalogue</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Dashboard')} style={styles.footerButton}>
-          <Icon name="chart-bar" size={24} color="#3b5998" />
+          <Icon name="chart-bar" size={24} color='#96d406' />
           <Text style={styles.footerText}>Dashboard</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.footerButton}>
-          <Icon name="chat-outline" size={24} color="#3b5998" />
+          <Icon name="chat-outline" size={24} color='#96d406' />
           <Text style={styles.footerText}>Chats</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.footerButton}>
-          <Icon name="account-outline" size={24} color="#3b5998" />
+          <Icon name="account-outline" size={24} color='#96d406' />
           <Text style={styles.footerText}>Profile</Text>
         </TouchableOpacity>
       </View>
@@ -108,10 +112,28 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#2a9d8f',
   },
+  addNewItem: {
+    backgroundColor: '#fff',
+    borderColor: '#96d406',
+    borderWidth: 2,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center', // Center elements horizontally
+    flexDirection: 'row', // Arrange icon and text horizontally // Ensure some space between the button and the footer
+    marginBottom:10,
+    padding:5,
+  },
+  editButtonText: {
+    fontSize: 16,
+    color: '#96d406',
+    fontWeight: 'bold',
+    marginLeft: 5, // Add margin to separate the icon and text
+    
+  },
   footer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    paddingTop:12,
+    
     borderTopWidth: 1,
     borderTopColor: '#ccc',
   },
@@ -119,7 +141,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   footerText: {
-    color: "#3b5998",
+    color: '#96d406',
     fontSize: 12,
     marginTop: 4,
   },

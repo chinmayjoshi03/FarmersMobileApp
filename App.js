@@ -131,7 +131,7 @@ function SettingsStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#228B22' },
+        headerStyle: { backgroundColor: '#96d406' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
         headerLeft: () => (
           <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
@@ -153,9 +153,9 @@ export default function App() {
           headerShown: false, // Manage header inside stack
         }}
       >
-        <Drawer.Screen name="Home" component={HomeStack} />
-        <Drawer.Screen name="Settings" component={SettingsStack} />
-        <Drawer.Screen name="SellerPage" component={SellerStack} />
+        <Drawer.Screen name="Home" component={HomeStack} options={{drawerActiveBackgroundColor:'#c6ff89',drawerActiveTintColor:'#498e00'}}/>
+        <Drawer.Screen name="Settings" component={SettingsStack} options={{drawerActiveBackgroundColor:'#c6ff89',drawerActiveTintColor:'#498e00'}}/>
+        <Drawer.Screen name="SellerPage" component={SellerStack} options={{drawerActiveBackgroundColor:'#c6ff89',drawerActiveTintColor:'#498e00'}}/>
       </Drawer.Navigator>
     </NavigationContainer>
   );
