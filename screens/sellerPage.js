@@ -9,11 +9,13 @@ const SellerPage = ({ navigation, route }) => {
   useEffect(() => {
     if (route.params && route.params.newItem) {
       const { newItem } = route.params;
-      setItems(prevItems => [...prevItems, newItem]);
+      setItems(prevItems => {
+        const isDuplicate = prevItems.some(item => item.name === newItem.name);
+        return isDuplicate ? prevItems : [...prevItems, newItem];
+      });
     }
   }, [route.params]);
 
-  // Render function for each item in the FlatList
   const renderItem = ({ item }) => (
     <View style={styles.card}>
       <Image source={{ uri: item.image }} style={styles.image} />
@@ -33,6 +35,7 @@ const SellerPage = ({ navigation, route }) => {
         data={items}
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
+        ListEmptyComponent={<Text style={styles.emptyMessage}>No items available. Add new items to see them here.</Text>}
       />
       <TouchableOpacity style={styles.addNewItem} title="Add New Item" onPress={() => navigation.navigate('Step1')}>
         <Text style={styles.editButtonText}>ADD NEW ITEM</Text>
@@ -50,13 +53,14 @@ const SellerPage = ({ navigation, route }) => {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.footerButton}>
-          <Icon name="chat-outline" size={24} color='#96d406' />
+          <Icon name="chat-outline" size={24} color="#3b5998" />
           <Text style={styles.footerText}>Chats</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.footerButton}>
-          <Icon name="account-outline" size={24} color='#96d406' />
+          <Icon name="account-outline" size={24} color="#3b5998" />
           <Text style={styles.footerText}>Profile</Text>
         </TouchableOpacity>
+
       </View>
     </View>
   );
@@ -112,28 +116,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#2a9d8f',
   },
-  addNewItem: {
-    backgroundColor: '#fff',
-    borderColor: '#96d406',
-    borderWidth: 2,
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center', // Center elements horizontally
-    flexDirection: 'row', // Arrange icon and text horizontally // Ensure some space between the button and the footer
-    marginBottom:10,
-    padding:5,
-  },
-  editButtonText: {
-    fontSize: 16,
-    color: '#96d406',
-    fontWeight: 'bold',
-    marginLeft: 5, // Add margin to separate the icon and text
-    
-  },
   footer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    
+    paddingTop:12,
     borderTopWidth: 1,
     borderTopColor: '#ccc',
   },

@@ -17,6 +17,8 @@ import Step2 from './screens/step2';
 import Step3 from './screens/step3';
 import Step4 from './screens/step4';
 import Dashboard from './screens/Dashboard';
+import Transactions from './screens/Transactions';
+import Chats from './screens/chats';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -45,11 +47,12 @@ function HomeStack({ navigation }) {
       <Stack.Screen name="Cart" component={Cart} />
       <Stack.Screen name="Profile" component={ProfilePage} />
       <Stack.Screen name="Categories" component={CategoriesPage} />
+
     </Stack.Navigator>
   );
 }
 
-// Seller Page Stack with Steps and Dashboard
+
 function SellerStack({ navigation }) {
   return (
     <Stack.Navigator
@@ -121,6 +124,32 @@ function SellerStack({ navigation }) {
     ),
   })}
 />
+<Stack.Screen 
+  name="Transactions"  // Ensure this name is correct
+  component={Transactions} 
+  options={({ navigation }) => ({
+    title: 'Transactions',
+    headerLeft: () => (
+      <Pressable onPress={() => navigation.navigate('SellerPage')} style={{ paddingRight: 10 }}>
+        <Ionicons name="arrow-back" size={24} color='#ffffff' />
+      </Pressable>
+    ),
+  })}
+/>
+
+<Stack.Screen 
+  name="Chats"  // Ensure this name is correct
+  component={Chats} 
+  options={({ navigation }) => ({
+    title: 'Chats',
+    headerLeft: () => (
+      <Pressable onPress={() => navigation.navigate('SellerPage')} style={{ paddingRight: 10 }}>
+        <Ionicons name="arrow-back" size={24} color='#ffffff' />
+      </Pressable>
+    ),
+  })}
+/>
+
 
     </Stack.Navigator>
   );
