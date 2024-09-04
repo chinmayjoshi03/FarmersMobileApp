@@ -8,11 +8,13 @@ const SellerPage = ({ navigation, route }) => {
   useEffect(() => {
     if (route.params && route.params.newItem) {
       const { newItem } = route.params;
-      setItems(prevItems => [...prevItems, newItem]);
+      setItems(prevItems => {
+        const isDuplicate = prevItems.some(item => item.name === newItem.name);
+        return isDuplicate ? prevItems : [...prevItems, newItem];
+      });
     }
   }, [route.params]);
 
-  // Render function for each item in the FlatList
   const renderItem = ({ item }) => (
     <View style={styles.card}>
       <Image source={{ uri: item.image }} style={styles.image} />
@@ -32,6 +34,7 @@ const SellerPage = ({ navigation, route }) => {
         data={items}
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
+        ListEmptyComponent={<Text style={styles.emptyMessage}>No items available. Add new items to see them here.</Text>}
       />
       <Button title="Add New Item" onPress={() => navigation.navigate('Step1')} />
       {/* Footer */}
@@ -46,13 +49,14 @@ const SellerPage = ({ navigation, route }) => {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.footerButton}>
-          <Icon name="chat-outline" size={24} color="#3b5998" />
+          <Icon name="chat-outline" onPress={() => navigation.navigate('Chats')} size={24} color="#3b5998" />
           <Text style={styles.footerText}>Chats</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.footerButton}>
+        <TouchableOpacity onPress={() => navigation.navigate('Transactions')} style={styles.footerButton}>
           <Icon name="account-outline" size={24} color="#3b5998" />
-          <Text style={styles.footerText}>Profile</Text>
+          <Text style={styles.footerText}>Transactions</Text>
         </TouchableOpacity>
+
       </View>
     </View>
   );
@@ -108,10 +112,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#2a9d8f',
   },
+  emptyMessage: {
+    fontSize: 16,
+    color: '#999',
+    textAlign: 'center',
+    marginTop: 20,
+  },
   footer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    paddingTop:12,
+    paddingTop: 12,
     borderTopWidth: 1,
     borderTopColor: '#ccc',
   },
