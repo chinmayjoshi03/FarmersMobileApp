@@ -31,7 +31,7 @@ import AboutKissanYukt from './screens/AboutKissanYukt';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
-// Home Stack Navigator
+
 function HomeStack({ navigation }) {
   return (
     <Stack.Navigator
@@ -59,7 +59,7 @@ function HomeStack({ navigation }) {
   );
 }
 
-// Seller Stack Navigator
+
 function SellerStack({ navigation }) {
   return (
     <Stack.Navigator
@@ -159,7 +159,7 @@ function SellerStack({ navigation }) {
   );
 }
 
-// Settings Stack Navigator
+
 function SettingsStack({ navigation }) {
   return (
     <Stack.Navigator
@@ -178,14 +178,167 @@ function SettingsStack({ navigation }) {
   );
 }
 
+
+
+function MyOrdersStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="My Orders" component={MyOrders} options={{ title: 'My Orders' }} />
+    </Stack.Navigator>
+  );
+}
+
+
+function FavouritesStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="Favourites" component={Favourites} options={{ title: 'Favourites' }} />
+    </Stack.Navigator>
+  );
+}
+
+
+function ShipWithKissanYuktStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="ShipWithKissanYukt" component={ShipWithKissanYukt} options={{ title: 'Ship with KissanYukt' }} />
+    </Stack.Navigator>
+  );
+}
+
+
+function FeedbackStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="Feedback" component={Feedback} options={{ title: 'Feedback' }} />
+    </Stack.Navigator>
+  );
+}
+
+
+function HelpAndSupportStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="HelpAndSupport" component={HelpAndSupport} options={{ title: 'Help and Support' }} />
+    </Stack.Navigator>
+  );
+}
+
+
+function ChooseLanguageStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="ChooseLanguage" component={ChooseLanguage} options={{ title: 'Choose Language' }} />
+    </Stack.Navigator>
+  );
+}
+
+
+function ShareAppStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="ShareApp" component={ShareApp} options={{ title: 'Share App' }} />
+    </Stack.Navigator>
+  );
+}
+
+
+function AboutKissanYuktStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="AboutKissanYukt" component={AboutKissanYukt} options={{ title: 'About KissanYukt' }} />
+    </Stack.Navigator>
+  );
+}
+
 export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
         screenOptions={{
           headerShown: false, // Manage header inside stack
-          drawerActiveBackgroundColor:'#c6ff89',
-          drawerActiveTintColor:'#498e00'
+          drawerActiveBackgroundColor: '#c6ff89',
+          drawerActiveTintColor: '#498e00'
         }}
       >
         <Drawer.Screen 
@@ -194,6 +347,70 @@ export default function App() {
           options={{
             drawerIcon: ({ color }) => (
               <Ionicons name="home-outline" size={24} color={color} />
+            ),
+          }}
+        />
+        
+        <Drawer.Screen 
+          name="SellerPage" 
+          component={SellerStack} 
+          options={{
+            drawerIcon: ({ color }) => (
+              <Ionicons name="storefront-outline" size={24} color={color} />
+            ),
+          }}
+        />
+        <Drawer.Screen 
+          name="My Orders" 
+          component={MyOrdersStack} 
+          options={{
+            drawerIcon: ({ color }) => (
+              <Ionicons name="cart-outline" size={28} color={color} />
+            ),
+          }}
+        />
+        <Drawer.Screen 
+          name="Favourites" 
+          component={FavouritesStack} 
+          options={{
+            drawerIcon: ({ color }) => (
+              <Ionicons name="heart-outline" size={28} color={color} />
+            ),
+          }}
+        />
+        <Drawer.Screen 
+          name="Ship with KissanYukt" 
+          component={ShipWithKissanYuktStack} 
+          options={{
+            drawerIcon: ({ color }) => (
+              <Ionicons name="boat-outline" size={28} color={color} />
+            ),
+          }}
+        />
+        <Drawer.Screen 
+          name="Feedback" 
+          component={FeedbackStack} 
+          options={{
+            drawerIcon: ({ color }) => (
+              <Ionicons name="chatbox-ellipses-outline" size={28} color={color} />
+            ),
+          }}
+        />
+        <Drawer.Screen 
+          name="Help and Support" 
+          component={HelpAndSupportStack} 
+          options={{
+            drawerIcon: ({ color }) => (
+              <Ionicons name="help-circle-outline" size={28} color={color} />
+            ),
+          }}
+        />
+        <Drawer.Screen 
+          name="Choose Language" 
+          component={ChooseLanguageStack} 
+          options={{
+            drawerIcon: ({ color }) => (
+              <Ionicons name="language-outline" size={28} color={color} />
             ),
           }}
         />
@@ -207,71 +424,8 @@ export default function App() {
           }}
         />
         <Drawer.Screen 
-          name="SellerPage" 
-          component={SellerStack} 
-          options={{
-            drawerIcon: ({ color }) => (
-              <Ionicons name="storefront-outline" size={24} color={color} />
-            ),
-          }}
-        />
-        <Drawer.Screen 
-          name="My Orders" 
-          component={MyOrders} 
-          options={{
-            drawerIcon: ({ color }) => (
-              <Ionicons name="cart-outline" size={28} color={color} />
-            ),
-          }}
-        />
-        <Drawer.Screen 
-          name="Favourites" 
-          component={Favourites} 
-          options={{
-            drawerIcon: ({ color }) => (
-              <Ionicons name="heart-outline" size={28} color={color} />
-            ),
-          }}
-        />
-        <Drawer.Screen 
-          name="Ship with KissanYukt" 
-          component={ShipWithKissanYukt} 
-          options={{
-            drawerIcon: ({ color }) => (
-              <Ionicons name="boat-outline" size={28} color={color} />
-            ),
-          }}
-        />
-        <Drawer.Screen 
-          name="Feedback" 
-          component={Feedback} 
-          options={{
-            drawerIcon: ({ color }) => (
-              <Ionicons name="chatbox-ellipses-outline" size={28} color={color} />
-            ),
-          }}
-        />
-        <Drawer.Screen 
-          name="Help and Support" 
-          component={HelpAndSupport} 
-          options={{
-            drawerIcon: ({ color }) => (
-              <Ionicons name="help-circle-outline" size={28} color={color} />
-            ),
-          }}
-        />
-        <Drawer.Screen 
-          name="Choose Language" 
-          component={ChooseLanguage} 
-          options={{
-            drawerIcon: ({ color }) => (
-              <Ionicons name="language-outline" size={28} color={color} />
-            ),
-          }}
-        />
-        <Drawer.Screen 
           name="Share App" 
-          component={ShareApp} 
+          component={ShareAppStack} 
           options={{
             drawerIcon: ({ color }) => (
               <Ionicons name="share-social-outline" size={28} color={color} />
@@ -280,7 +434,7 @@ export default function App() {
         />
         <Drawer.Screen 
           name="About KissanYukt" 
-          component={AboutKissanYukt} 
+          component={AboutKissanYuktStack} 
           options={{
             drawerIcon: ({ color }) => (
               <Ionicons name="information-circle-outline" size={28} color={color} />
@@ -291,3 +445,4 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
