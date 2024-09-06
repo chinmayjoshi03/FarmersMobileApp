@@ -38,7 +38,7 @@ const SellerPage = ({ navigation, route }) => {
         ListEmptyComponent={<Text style={styles.emptyMessage}>No items available. Add new items to see them here.</Text>}
       />
       <TouchableOpacity style={styles.addNewItem} title="Add New Item" onPress={() => navigation.navigate('Step1')}>
-        <Text style={styles.editButtonText}>ADD NEW ITEM</Text>
+        <Text style={styles.addNewItemText}>ADD NEW ITEM</Text>
       </TouchableOpacity>
       
       {/* Footer */}
@@ -52,13 +52,13 @@ const SellerPage = ({ navigation, route }) => {
           <Text style={styles.footerText}>Dashboard</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Chats')} style={styles.footerButton}>
-          <Icon name="chat-outline" size={24} color="#96d406" />
+        <TouchableOpacity style={styles.footerButton}>
+          <Icon name="chat-outline" size={24} color='#96d406' />
           <Text style={styles.footerText}>Chats</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Transactions')} style={styles.footerButton}>
-        <Icon name="credit-card-outline"  size={24} color="#96d406" />
-          <Text style={styles.footerText}>Transactions</Text>
+        <TouchableOpacity style={styles.footerButton}>
+          <Icon name="account-outline" size={24} color='#96d406' />
+          <Text style={styles.footerText}>Profile</Text>
         </TouchableOpacity>
 
       </View>
@@ -133,6 +133,24 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#2a9d8f',
+  },
+  addNewItem:{ 
+    backgroundColor: '#fff',
+    borderColor: '#96d406',
+    borderWidth: 2,
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center', // Center elements horizontally
+    flexDirection: 'row', // Arrange icon and text horizontally
+    color:'#96d406',
+    marginBottom: 10, // Ensure some space between the button and the footer
+  },
+  addNewItemText:{
+    fontSize: 18,
+    color: '#96d406',
+    fontWeight: 'bold',
+    
   },
   footer: {
     flexDirection: 'row',

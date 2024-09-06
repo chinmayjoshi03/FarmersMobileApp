@@ -15,13 +15,6 @@ import ChooseLanguage from './screens/ChooseLanguage';
 import SettingsScreen from './screens/settingscreen';
 import ShareApp from './screens/ShareApp';
 import AboutKissanYukt from './screens/AboutKissanYukt';
-import Step1 from './screens/step1';
-import Step2 from './screens/step2';
-import Step3 from './screens/step3';
-import Step4 from './screens/step4';
-import Dashboard from './screens/Dashboard';
-import Transactions from './screens/Transactions';
-import Chats from './screens/chats';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -62,6 +55,10 @@ function HomeStack({ navigation }) {
       }}
     >
       <Stack.Screen name="Home" component={HomePage} options={{ title: "Welcome" }} />
+      <Stack.Screen name="About" component={AboutPage} />
+      <Stack.Screen name="Cart" component={Cart} />
+      <Stack.Screen name="Profile" component={ProfilePage} />
+      <Stack.Screen name="Categories" component={CategoriesPage} />
     </Stack.Navigator>
   );
 }
@@ -211,3 +208,4 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
