@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { SafeAreaView, View, Text, TextInput, StyleSheet, FlatList, TouchableOpacity, Image, Dimensions, Animated } from 'react-native';
+import { SafeAreaView, View, Text, TextInput, StyleSheet, FlatList, TouchableOpacity, Image, Dimensions, Animated, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Footer from './Footer';  // Adjust the path as necessary
 import { ScrollView } from 'react-native-gesture-handler';
+import LoadItem from './LoadItem';
 
 const categories = [
   {
@@ -187,19 +188,34 @@ export default function HomePage({ navigation }) {
     outputRange: categories.map((_, index) => (screenWidth / categories.length) * index),
     extrapolate: 'clamp',
   });
-
   const dotIndex = scrollX.interpolate({
     inputRange: categories.map((_, index) => index * screenWidth),
     outputRange: categories.map((_, index) => index),
     extrapolate: 'clamp',
   });
-  const renderrecommendedproducts = ({ item }) => (
-    <TouchableOpacity style={styles.recommendedproductsItem}>
-      {item.image && <Image source={item.image} style={styles.recommendedproductsImage} />}
-      <Text style={styles.recommendedproductsText}>{item.productName}</Text>
-      <Text style={styles.recommendedproductspricetext}>{item.price}</Text>
-    </TouchableOpacity>
-  );
+  const renderrecommendedproducts = ({ item }) => {
+    const handlePress = () => {
+      const loaditems = { id: item.id,name : item.name,
+        image : item.image,
+        productName: item.productName,
+        price: item.price,
+        minOrderQty: item.minOrderQty,
+        location: item.location, };  // Create a new object with the item id
+      navigation.navigate('LoadItem', loaditems);  // Pass the updated loaditems object to the navigate function
+    };
+  
+    return (
+      <TouchableOpacity
+        style={styles.recommendedproductsItem}
+        onPress={handlePress}
+      >
+        <Image source={item.image} style={styles.recommendedproductsImage} />
+        <Text style={styles.recommendedproductsText}>{item.productName}</Text>
+        <Text style={styles.recommendedproductspricetext}>{item.price}</Text>
+      </TouchableOpacity>
+    );
+  };
+  
 
   return (
     <SafeAreaView style={styles.container}>
@@ -255,10 +271,10 @@ export default function HomePage({ navigation }) {
               ]}
             />
           ))}
-       
       </View>
       </View>
       <View>
+      
         <FlatList
           data={recommended_products}
           renderItem={renderrecommendedproducts}
@@ -266,6 +282,8 @@ export default function HomePage({ navigation }) {
           numColumns={numColumns}
           contentContainerStyle={styles.recommendedproductsList}
         />
+      
+        
       </View>
       </ScrollView>
       {/* Footer */}

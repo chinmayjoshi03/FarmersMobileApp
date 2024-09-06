@@ -27,6 +27,7 @@ import HelpAndSupport from './screens/HelpAndSupport';
 import ChooseLanguage from './screens/ChooseLanguage';
 import ShareApp from './screens/ShareApp';
 import AboutKissanYukt from './screens/AboutKissanYukt';
+import LoadItem from './screens/LoadItem';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -55,6 +56,7 @@ function HomeStack({ navigation }) {
       <Stack.Screen name="Cart" component={Cart} />
       <Stack.Screen name="Profile" component={ProfilePage} />
       <Stack.Screen name="Categories" component={CategoriesPage} />
+      <Stack.Screen name="LoadItem" component={LoadItem} />
     </Stack.Navigator>
   );
 }
@@ -445,4 +447,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
