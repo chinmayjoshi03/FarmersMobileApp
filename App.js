@@ -26,7 +26,13 @@ import Dashboard from './screens/Dashboard';
 import Transactions from './screens/Transactions';
 import ChatsPage from './screens/chats';
 import LoadItem from './screens/LoadItem';
-import CategoryItemsPage from './screens/CategoriesItem';
+import CategoryItemsPage from './screens/categoriesItem';
+import { CartProvider } from './screens/cartContex';
+import PaymentOptions from './screens/Payments';
+import ChatWithFarmer from './screens/ChatWithFarmer';
+import ChatWithSeller from './screens/ChatWithCustomer';
+import ChatWithCustomer from './screens/ChatWithCustomer';
+import InboxPage from './screens/Inbox';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -39,10 +45,10 @@ function CustomDrawerContent(props) {
         label="Logout"
         onPress={() => alert('Logging out')}
         icon={({ color, size }) => (
-          <Ionicons name="log-out-outline" size={size + 4} color={color} /> // Slightly larger icon
+          <Ionicons name="log-out-outline" size={size + 4} color={color} /> 
         )}
-        labelStyle={{ fontWeight: 'bold' }} // Make text bold
-        style={{ marginTop: 'auto' }} // This ensures it's placed at the bottom
+        labelStyle={{ fontWeight: 'bold' }} 
+        style={{ marginTop: 'auto' }} 
       />
     </DrawerContentScrollView>
   );
@@ -52,7 +58,7 @@ function HomeStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#96d406' },
+        headerStyle: { backgroundColor: '#009900' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
         headerLeft: () => (
           <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
@@ -60,19 +66,80 @@ function HomeStack({ navigation }) {
           </Pressable>
         ),
         headerRight: () => (
-          <Pressable onPress={() => alert("Profile opened")} style={{ paddingRight: 10 }}>
-            <Ionicons name="notifications-outline" size={25} color='#ffffff' />
+          <Pressable onPress={() => navigation.navigate('Inbox')} style={{ paddingRight: 10 }}>
+            <Ionicons name="mail-outline" size={25} color='#ffffff' /> {/* Inbox Icon */}
           </Pressable>
         ),
       }}
     >
       <Stack.Screen name="Home" component={HomePage} options={{ title: "Welcome" }} />
       
-      <Stack.Screen name="Cart" component={Cart} />
+      <Stack.Screen 
+  name="Cart" 
+  component={Cart} 
+  options={({ navigation }) => ({
+    title: 'Your Cart',
+    headerStyle: { backgroundColor: '#009900' },
+    headerTitleStyle: { color: '#ffffff' },
+    headerLeft: () => (
+      <Pressable onPress={() => navigation.goBack()} style={{paddingLeft: 1, paddingRight:7}}>
+        <Ionicons name="arrow-back-outline" size={25} color="#ffffff" />
+      </Pressable>
+    ),
+  })}
+/>
+
       <Stack.Screen name="Profile" component={ProfilePage} />
       <Stack.Screen name="Categories" component={CategoriesPage} />
       <Stack.Screen name="CategoryItemsPage" component={CategoryItemsPage} />
-      <Stack.Screen name="LoadItem" component={LoadItem} />
+      <Stack.Screen name="Inbox" component={InboxPage} />
+      <Stack.Screen 
+  name="LoadItem" 
+  component={LoadItem} 
+  options={({ route, navigation }) => ({
+    title: route.params?.productName || 'Load Item',
+    headerStyle: { backgroundColor: '#009900' },
+    headerTitleStyle: { color: '#ffffff' },
+    headerLeft: () => (
+      <Pressable onPress={() => navigation.goBack()} style={{paddingLeft: 1, paddingRight:7 }}>
+        <Ionicons name="arrow-back-outline" size={25} color="#ffffff" />
+      </Pressable>
+    ),
+  })}
+/>
+
+
+      <Stack.Screen 
+  name="PaymentOptions" 
+  component={PaymentOptions} 
+  options={({ navigation }) => ({
+    title: 'Payment',
+    headerStyle: { backgroundColor: '#009900' },
+    headerTitleStyle: { color: '#ffffff' },
+    headerLeft: () => (
+      <Pressable onPress={() => navigation.goBack()} style={{ paddingLeft: 1, paddingRight:7 }}>
+        <Ionicons name="arrow-back-outline" size={25} color="#ffffff" />
+      </Pressable>
+    ),
+  })}
+/>
+
+      <Stack.Screen 
+  name="ChatWithFarmer" 
+  component={ChatWithFarmer} 
+  options={({ navigation }) => ({
+    title: 'Chat with Farmer', 
+    headerStyle: { backgroundColor: '#009900' },
+    headerTitleStyle: { color: '#ffffff' },
+    headerLeft: () => (
+      <Pressable onPress={() => navigation.goBack()} style={{ paddingLeft: 1, paddingRight:7 }}>
+        <Ionicons name="arrow-back-outline" size={28} color="#ffffff" />
+      </Pressable>
+    ),
+  })}
+/>
+
+      
     </Stack.Navigator>
   );
 }
@@ -81,7 +148,7 @@ function SellerStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#8cbe2c' },
+        headerStyle: { backgroundColor: '#009900' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
       }}
     >
@@ -91,7 +158,7 @@ function SellerStack({ navigation }) {
         options={{
           title: 'Seller Page',
           headerLeft: () => (
-            <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Pressable onPress={() => navigation.openDrawer()} style={{ paddingLeft: 1, paddingRight:7 }}>
               <Ionicons name="menu-outline" size={32} color='#ffffff' />
             </Pressable>
           ),
@@ -104,16 +171,17 @@ function SellerStack({ navigation }) {
       <Stack.Screen name="Dashboard" component={Dashboard} options={{ title: 'Dashboard' }} />
       <Stack.Screen name="Transactions" component={Transactions} options={{ title: 'Transactions' }} />
       <Stack.Screen name="Chats" component={ChatsPage} options={{ title: 'Chats' }} />
+     <Stack.Screen name="ChatWithCustomer" component={ChatWithCustomer} options={{ title: 'Chat with Customer' }}/>
     </Stack.Navigator>
   );
 }
 
-// My Orders Stack Navigator
+
 function MyOrdersStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#96d406' },
+        headerStyle: { backgroundColor: '#009900' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
         headerLeft: () => (
           <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
@@ -127,12 +195,12 @@ function MyOrdersStack({ navigation }) {
   );
 }
 
-// Favourites Stack Navigator
+
 function FavouritesStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#96d406' },
+        headerStyle: { backgroundColor: '#009900' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
         headerLeft: () => (
           <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
@@ -146,12 +214,12 @@ function FavouritesStack({ navigation }) {
   );
 }
 
-// Ship with KissanYukt Stack Navigator
+
 function ShipWithKissanYuktStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#96d406' },
+        headerStyle: { backgroundColor: '#009900' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
         headerLeft: () => (
           <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
@@ -165,12 +233,12 @@ function ShipWithKissanYuktStack({ navigation }) {
   );
 }
 
-// Feedback Stack Navigator
+
 function FeedbackStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#96d406' },
+        headerStyle: { backgroundColor: '#009900' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
         headerLeft: () => (
           <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
@@ -184,12 +252,12 @@ function FeedbackStack({ navigation }) {
   );
 }
 
-// Help and Support Stack Navigator
+
 function HelpAndSupportStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#96d406' },
+        headerStyle: { backgroundColor: '#009900' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
         headerLeft: () => (
           <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
@@ -203,12 +271,12 @@ function HelpAndSupportStack({ navigation }) {
   );
 }
 
-// Choose Language Stack Navigator
+
 function ChooseLanguageStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#96d406' },
+        headerStyle: { backgroundColor: '#009900' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
         headerLeft: () => (
           <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
@@ -222,12 +290,12 @@ function ChooseLanguageStack({ navigation }) {
   );
 }
 
-// Share App Stack Navigator
+
 function ShareAppStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#96d406' },
+        headerStyle: { backgroundColor: '#009900' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
         headerLeft: () => (
           <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
@@ -241,12 +309,12 @@ function ShareAppStack({ navigation }) {
   );
 }
 
-// About KissanYukt Stack Navigator
+
 function AboutKissanYuktStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#96d406' },
+        headerStyle: { backgroundColor: '#009900' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
         headerLeft: () => (
           <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
@@ -265,7 +333,7 @@ function SettingsStack({ navigation }) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#96d406' },
+        headerStyle: { backgroundColor: '#009900' },
         headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
         headerLeft: () => (
           <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
@@ -282,12 +350,13 @@ function SettingsStack({ navigation }) {
 
 export default function App() {
   return (
+    <CartProvider>
     <NavigationContainer>
       <Drawer.Navigator
         screenOptions={{
-          headerShown: false, // Manage header inside stack
-          drawerActiveBackgroundColor: '#c6ff89',
-          drawerActiveTintColor: '#498e00'
+          headerShown: false, 
+          drawerActiveBackgroundColor: '#ff888f',
+          drawerActiveTintColor: 'ff888f'
         }}
       >
         <Drawer.Screen 
@@ -391,5 +460,7 @@ export default function App() {
         />
       </Drawer.Navigator>
     </NavigationContainer>
+    </CartProvider>
   );
+  
 }

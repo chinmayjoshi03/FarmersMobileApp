@@ -1,17 +1,42 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons'; // Import Material Icons
-import FontAwesome from 'react-native-vector-icons/FontAwesome'; // Import FontAwesome Icons
+import React, { useContext, useState } from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Modal, Pressable } from 'react-native';
+import { CartContext } from './cartContex'; 
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Stars from 'react-native-stars';
 
 export default function LoadItem({ route, navigation }) {
-  const { image, productName, price, minOrderQty, location } = route.params;
+  const { image, productName, price, minOrderQty, location, farmerName, starRating = 4, responseRate = '95%' } = route.params;
+  const { addToCart } = useContext(CartContext);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const handleAddToCart = () => {
+    const product = { image, productName, price, minOrderQty, location };
+    addToCart(product);
+    navigation.navigate('Cart');
+  };
 
   return (
     <ScrollView style={styles.container}>
-      {/* Product Image */}
-      <Image source={image} style={styles.productImage} />
-      
-      {/* Product Details */}
+      <TouchableOpacity onPress={() => setModalVisible(true)}>
+        <Image source={image} style={styles.productImage} />
+      </TouchableOpacity>
+
+      {/* Modal for displaying the image in full screen */}
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalContainer}>
+          <Pressable onPress={() => setModalVisible(false)} style={styles.modalCloseButton}>
+            <Icon name="close" size={30} color="#fff" />
+          </Pressable>
+          <Image source={image} style={styles.modalImage} />
+        </View>
+      </Modal>
+
       <View style={styles.detailsContainer}>
         <Text style={styles.productName}>{productName}</Text>
         <Text style={styles.price}>Price: {price}</Text>
@@ -19,28 +44,40 @@ export default function LoadItem({ route, navigation }) {
         <Text style={styles.location}>Location: {location}</Text>
 
         <View style={styles.separator} />
-
         <Text style={styles.sectionTitle}>Product Description</Text>
         <Text style={styles.description}>
-          This product is sourced from high-quality farms in {location}. It is grown under optimal conditions to ensure the best quality and freshness. Place your order now and enjoy timely delivery right to your doorstep.
+          This product is sourced from high-quality farms in {location}. Place your order now and enjoy timely delivery.
         </Text>
 
-        {/* Button Container with Icons */}
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.buyButton}>
-            <FontAwesome name="shopping-cart" size={20} color="#fff" style={styles.icon} />
-            <Text style={styles.buyButtonText}>Order Now</Text>
-          </TouchableOpacity>
+        <View style={styles.sellerContainer}>
+          <Text style={styles.sellerTitle}>About the Seller</Text>
+          <Text style={styles.sellerInfo}>Name: {farmerName}</Text>
+          <View style={styles.ratingContainer}>
+            <Stars
+              default={starRating}
+              count={5}
+              half={true}
+              starSize={20}
+              fullStar={<Icon name="star" size={20} color="#f5c518" />}
+              emptyStar={<Icon name="star-border" size={20} color="#f5c518" />}
+              halfStar={<Icon name="star-half" size={20} color="#f5c518" />}
+              disabled={true}
+            />
+          </View>
+          <Text style={styles.responseRate}>Response Rate: {responseRate}</Text>
+          <Text style={styles.verified}>Verified User</Text>
+        </View>
 
-          <TouchableOpacity style={styles.chatButton} onPress={() => navigation.navigate('Chat')}>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.addToCartButton} onPress={handleAddToCart}>
+            <FontAwesome name="shopping-cart" size={20} color="#fff" style={styles.icon} />
+            <Text style={styles.addToCartButtonText}>Add to Cart</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.chatButton} onPress={() => navigation.navigate('ChatWithFarmer', { farmerId: '123' })}>
             <Icon name="chat" size={20} color="#fff" style={styles.icon} />
             <Text style={styles.chatButtonText}>Get Best Price</Text>
           </TouchableOpacity>
         </View>
-
-        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-          <Text style={styles.backButtonText}>Back to Home</Text>
-        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -55,6 +92,23 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 300,
     resizeMode: 'cover',
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)', // Dark overlay
+  },
+  modalImage: {
+    width: '90%',
+    height: '80%',
+    resizeMode: 'contain',
+  },
+  modalCloseButton: {
+    position: 'absolute',
+    top: 20,
+    right: 20,
+    zIndex: 1,
   },
   detailsContainer: {
     padding: 20,
@@ -107,12 +161,46 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     marginBottom: 20,
   },
+  sellerContainer: {
+    padding: 15,
+    borderRadius: 10,
+    backgroundColor: '#f1f1f1',
+    marginBottom: 20,
+  },
+  sellerTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    color: '#333',
+  },
+  sellerInfo: {
+    fontSize: 16,
+    color: '#666',
+    marginBottom: 5,
+  },
+  ratingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 2,
+  },
+  verified: {
+    fontSize: 16,
+    color: '#28a745', // Green color
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
+  responseRate: {
+    fontSize: 16,
+    color: '#333',
+    fontWeight: 'bold',
+    marginTop: 5,
+  },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 20,
   },
-  buyButton: {
+  addToCartButton: {
     backgroundColor: '#96d406',
     paddingVertical: 15,
     borderRadius: 10,
@@ -133,7 +221,7 @@ const styles = StyleSheet.create({
   icon: {
     marginRight: 8,
   },
-  buyButtonText: {
+  addToCartButtonText: {
     fontSize: 18,
     color: '#fff',
     fontWeight: 'bold',
@@ -141,18 +229,6 @@ const styles = StyleSheet.create({
   chatButtonText: {
     fontSize: 18,
     color: '#fff',
-    fontWeight: 'bold',
-  },
-  backButton: {
-    paddingVertical: 15,
-    borderRadius: 10,
-    alignItems: 'center',
-    borderColor: '#3498db',
-    borderWidth: 1,
-  },
-  backButtonText: {
-    fontSize: 18,
-    color: '#3498db',
     fontWeight: 'bold',
   },
 });

@@ -10,7 +10,11 @@ export default function ChatsPage({ navigation }) {
   ];
 
   const renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.chatCard} onPress={() => alert(`Opening chat with ${item.name}`)}>
+    <TouchableOpacity
+      style={styles.chatCard}
+      onPress={() => navigation.navigate('ChatWithCustomer', { name: item.name, status: item.status })}
+    >
+
       <View style={styles.chatHeader}>
         <Text style={styles.chatName}>{item.name}</Text>
         <Text style={[styles.status, 

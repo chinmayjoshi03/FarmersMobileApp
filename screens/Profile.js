@@ -2,19 +2,19 @@ import React from 'react';
 import { SafeAreaView, View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Footer from './Footer'; // Adjust the path as necessary
-const profile_image=require("../assets/adaptive-icon.png");
+const profile_image=require("../assets/images/ramlal.png");
 
 export default function ProfilePage({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.contentContainer}>
-        {/* Profile Image */}
+       
         <View style={styles.profileContainer}>
           <Image source={profile_image} style={styles.profileImage}/>
-          <Text style={styles.userName}>John Doe</Text>
+          <Text style={styles.userName}>Ramlal</Text>
         </View>
 
-        {/* User Details */}
+        
         <View style={styles.userDetails}>
           <View style={styles.detailRow}>
             <Ionicons name="location-outline" size={20} color="#96d406" style={styles.icon} />
@@ -28,18 +28,18 @@ export default function ProfilePage({ navigation }) {
 
           <View style={styles.detailRow}>
             <Ionicons name="mail-outline" size={20} color="#96d406" style={styles.icon} />
-            <Text style={styles.detailText}>john.doe@example.com</Text>
+            <Text style={styles.detailText}>ramlal@KissanYukt.com</Text>
           </View>
         </View>
       </View>
 
-      {/* Edit Profile Button */}
+     
       <TouchableOpacity style={styles.editButton}>
         <Ionicons name="pencil-sharp" size={24} color="#96d406" style={styles.icon} />
         <Text style={styles.editButtonText}>Edit Profile</Text>
       </TouchableOpacity>
 
-      {/* Footer */}
+      
       <View style={styles.footerContainer}>
         <Footer navigation={navigation} />
       </View>
