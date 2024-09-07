@@ -6,6 +6,7 @@ import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerI
 import { Ionicons } from '@expo/vector-icons';
 import HomePage from './screens/Home';
 import SellerPage from './screens/sellerPage';
+import Cart from './screens/Cart';
 import MyOrders from './screens/MyOrders';
 import Favourites from './screens/Favourites';
 import ShipWithKissanYukt from './screens/ShipWithKissanYukt';
@@ -15,6 +16,17 @@ import ChooseLanguage from './screens/ChooseLanguage';
 import SettingsScreen from './screens/settingscreen';
 import ShareApp from './screens/ShareApp';
 import AboutKissanYukt from './screens/AboutKissanYukt';
+import ProfilePage from './screens/Profile';
+import CategoriesPage from './screens/CategoriesPage';
+import Step1 from './screens/step1';
+import Step2 from './screens/step2';
+import Step3 from './screens/step3';
+import Step4 from './screens/step4';
+import Dashboard from './screens/Dashboard';
+import Transactions from './screens/Transactions';
+import ChatsPage from './screens/chats';
+import LoadItem from './screens/LoadItem';
+import CategoryItemsPage from './screens/CategoriesItem';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -55,10 +67,12 @@ function HomeStack({ navigation }) {
       }}
     >
       <Stack.Screen name="Home" component={HomePage} options={{ title: "Welcome" }} />
-      <Stack.Screen name="About" component={AboutPage} />
+      
       <Stack.Screen name="Cart" component={Cart} />
       <Stack.Screen name="Profile" component={ProfilePage} />
       <Stack.Screen name="Categories" component={CategoriesPage} />
+      <Stack.Screen name="CategoryItemsPage" component={CategoryItemsPage} />
+      <Stack.Screen name="LoadItem" component={LoadItem} />
     </Stack.Navigator>
   );
 }
@@ -89,16 +103,187 @@ function SellerStack({ navigation }) {
       <Stack.Screen name="Step4" component={Step4} options={{ title: 'Step 4: Enter Price' }} />
       <Stack.Screen name="Dashboard" component={Dashboard} options={{ title: 'Dashboard' }} />
       <Stack.Screen name="Transactions" component={Transactions} options={{ title: 'Transactions' }} />
-      <Stack.Screen name="Chats" component={Chats} options={{ title: 'Chats' }} />
+      <Stack.Screen name="Chats" component={ChatsPage} options={{ title: 'Chats' }} />
     </Stack.Navigator>
   );
 }
+
+// My Orders Stack Navigator
+function MyOrdersStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="My Orders" component={MyOrders} options={{ title: 'My Orders' }} />
+    </Stack.Navigator>
+  );
+}
+
+// Favourites Stack Navigator
+function FavouritesStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="Favourites" component={Favourites} options={{ title: 'Favourites' }} />
+    </Stack.Navigator>
+  );
+}
+
+// Ship with KissanYukt Stack Navigator
+function ShipWithKissanYuktStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="ShipWithKissanYukt" component={ShipWithKissanYukt} options={{ title: 'Ship with KissanYukt' }} />
+    </Stack.Navigator>
+  );
+}
+
+// Feedback Stack Navigator
+function FeedbackStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="Feedback" component={Feedback} options={{ title: 'Feedback' }} />
+    </Stack.Navigator>
+  );
+}
+
+// Help and Support Stack Navigator
+function HelpAndSupportStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="HelpAndSupport" component={HelpAndSupport} options={{ title: 'Help and Support' }} />
+    </Stack.Navigator>
+  );
+}
+
+// Choose Language Stack Navigator
+function ChooseLanguageStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="ChooseLanguage" component={ChooseLanguage} options={{ title: 'Choose Language' }} />
+    </Stack.Navigator>
+  );
+}
+
+// Share App Stack Navigator
+function ShareAppStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="ShareApp" component={ShareApp} options={{ title: 'Share App' }} />
+    </Stack.Navigator>
+  );
+}
+
+// About KissanYukt Stack Navigator
+function AboutKissanYuktStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="AboutKissanYukt" component={AboutKissanYukt} options={{ title: 'About KissanYukt' }} />
+    </Stack.Navigator>
+  );
+}
+
+// Settings Stack Navigator
+function SettingsStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#96d406' },
+        headerTitleStyle: { color: '#ffffff', marginLeft: 10 },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()} style={{ paddingRight: 10 }}>
+            <Ionicons name="menu-outline" size={32} color='#ffffff' />
+          </Pressable>
+        ),
+      }}
+    >
+      <Stack.Screen name="Settings" component={SettingsScreen} options={{ title: 'Settings' }} />
+    </Stack.Navigator>
+  );
+}
+
 
 export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        drawerContent={props => <CustomDrawerContent {...props} />}
         screenOptions={{
           headerShown: false, // Manage header inside stack
           drawerActiveBackgroundColor: '#c6ff89',
@@ -115,6 +300,15 @@ export default function App() {
           }}
         />
         <Drawer.Screen 
+          name="Settings" 
+          component={SettingsStack} 
+          options={{
+            drawerIcon: ({ color }) => (
+              <Ionicons name="settings-outline" size={24} color={color} />
+            ),
+          }}
+        />
+        <Drawer.Screen 
           name="SellerPage" 
           component={SellerStack} 
           options={{
@@ -125,7 +319,7 @@ export default function App() {
         />
         <Drawer.Screen 
           name="My Orders" 
-          component={MyOrders} 
+          component={MyOrdersStack} 
           options={{
             drawerIcon: ({ color }) => (
               <Ionicons name="cart-outline" size={28} color={color} />
@@ -134,7 +328,7 @@ export default function App() {
         />
         <Drawer.Screen 
           name="Favourites" 
-          component={Favourites} 
+          component={FavouritesStack} 
           options={{
             drawerIcon: ({ color }) => (
               <Ionicons name="heart-outline" size={28} color={color} />
@@ -143,7 +337,7 @@ export default function App() {
         />
         <Drawer.Screen 
           name="Ship with KissanYukt" 
-          component={ShipWithKissanYukt} 
+          component={ShipWithKissanYuktStack} 
           options={{
             drawerIcon: ({ color }) => (
               <Ionicons name="boat-outline" size={28} color={color} />
@@ -152,7 +346,7 @@ export default function App() {
         />
         <Drawer.Screen 
           name="Feedback" 
-          component={Feedback} 
+          component={FeedbackStack} 
           options={{
             drawerIcon: ({ color }) => (
               <Ionicons name="chatbox-ellipses-outline" size={28} color={color} />
@@ -161,7 +355,7 @@ export default function App() {
         />
         <Drawer.Screen 
           name="Help and Support" 
-          component={HelpAndSupport} 
+          component={HelpAndSupportStack} 
           options={{
             drawerIcon: ({ color }) => (
               <Ionicons name="help-circle-outline" size={28} color={color} />
@@ -170,7 +364,7 @@ export default function App() {
         />
         <Drawer.Screen 
           name="Choose Language" 
-          component={ChooseLanguage} 
+          component={ChooseLanguageStack} 
           options={{
             drawerIcon: ({ color }) => (
               <Ionicons name="language-outline" size={28} color={color} />
@@ -178,17 +372,8 @@ export default function App() {
           }}
         />
         <Drawer.Screen 
-          name="Settings" 
-          component={SettingsScreen} 
-          options={{
-            drawerIcon: ({ color }) => (
-              <Ionicons name="settings-outline" size={24} color={color} />
-            ),
-          }}
-        />
-        <Drawer.Screen 
           name="Share App" 
-          component={ShareApp} 
+          component={ShareAppStack} 
           options={{
             drawerIcon: ({ color }) => (
               <Ionicons name="share-social-outline" size={28} color={color} />
@@ -197,7 +382,7 @@ export default function App() {
         />
         <Drawer.Screen 
           name="About KissanYukt" 
-          component={AboutKissanYukt} 
+          component={AboutKissanYuktStack} 
           options={{
             drawerIcon: ({ color }) => (
               <Ionicons name="information-circle-outline" size={28} color={color} />
@@ -208,4 +393,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
