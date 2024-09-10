@@ -13,8 +13,8 @@ export default function Footer({ navigation }) {
         <Ionicons 
           name="home-outline" 
           size={24} 
-          color={currentRoute === 'Home' ? '#ff888f' : '#009900'} />
-        <Text style={[styles.footerText, { color: currentRoute === 'Home' ? '#ff888f' : '#009900' }]}>
+          color={currentRoute === 'Home' ? '#009900' : '#b2b0b0'} />
+        <Text style={[styles.footerText, { color: currentRoute === 'Home' ? '#009900' : '#b2b0b0' }]}>
           Home
         </Text>
       </TouchableOpacity>
@@ -25,8 +25,8 @@ export default function Footer({ navigation }) {
         <Ionicons 
           name="grid-outline" 
           size={24} 
-          color={currentRoute === 'Categories' ? '#96d406' : '#009900'} />
-        <Text style={[styles.footerText, { color: currentRoute === 'Categories' ? '#96d406' : '#009900' }]}>
+          color={currentRoute === 'Categories' ? '#009900' : '#b2b0b0'} />
+        <Text style={[styles.footerText, { color: currentRoute === 'Categories' ? '#009900' : '#b2b0b0' }]}>
           Categories
         </Text>
       </TouchableOpacity>
@@ -37,8 +37,8 @@ export default function Footer({ navigation }) {
         <Ionicons 
           name="cart-outline" 
           size={24} 
-          color={currentRoute === 'Cart' ? '#96d406' : '#009900'} />
-        <Text style={[styles.footerText, { color: currentRoute === 'Cart' ? '#96d406' : '#009900' }]}>
+          color={currentRoute === 'Cart' ? '#009900' : '#b2b0b0'} />
+        <Text style={[styles.footerText, { color: currentRoute === 'Cart' ? '#009900' : '#b2b0b0' }]}>
           Cart
         </Text>
       </TouchableOpacity>
@@ -49,8 +49,8 @@ export default function Footer({ navigation }) {
         <Ionicons 
           name="person-outline" 
           size={24} 
-          color={currentRoute === 'Profile' ? '#96d406' : '#009900'} />
-        <Text style={[styles.footerText, { color: currentRoute === 'Profile' ? '#96d406' : '#009900' }]}>
+          color={currentRoute === 'Profile' ? '#009900' : '#b2b0b0'} />
+        <Text style={[styles.footerText, { color: currentRoute === 'Profile' ? '#009900' : '#b2b0b0' }]}>
           Profile
         </Text>
       </TouchableOpacity>

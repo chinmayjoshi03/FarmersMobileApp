@@ -22,11 +22,19 @@ const PaymentOptions = ({ route }) => {
       <Text style={styles.header}>Payment Option</Text>
 
       <View style={styles.cartInfo}>
-        <Text style={styles.cartItem}>Cart Items:</Text>
-        <Text style={styles.cartItemValue}>{totalQuantity}</Text>
-        <Text style={styles.totalPayable}>Total Payable:</Text>
-        <Text style={styles.totalPayableValue}>₹ {totalPrice.toFixed(2)}</Text>
-      </View>
+  {/* Cart Items Section */}
+  <View style={styles.cartRow}>
+    <Text style={styles.cartItem}>Cart Items:</Text>
+    <Text style={styles.cartItemValue}>{totalQuantity}</Text>
+  </View>
+
+  {/* Total Payable Section */}
+  <View style={styles.cartRow}>
+    <Text style={styles.totalPayable}>Total Payable:</Text>
+    <Text style={styles.totalPayableValue}>₹ {totalPrice.toFixed(2)}</Text>
+  </View>
+</View>
+
 
       <ScrollView style={styles.paymentList}>
         {paymentMethods.map((method) => (

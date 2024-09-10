@@ -17,7 +17,7 @@ export default function Step4  ({ navigation, route })  {
       const newItem = { category, name, description, image, price };
   
       // Navigate back to SellerPage with the new item data
-      navigation.navigate('SellerPage', { newItem });
+      navigation.navigate('Sell With KissanYukt', { newItem });
     };
   
     return (

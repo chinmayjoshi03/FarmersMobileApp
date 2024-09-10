@@ -23,7 +23,7 @@ const SellerPage = ({ navigation, route }) => {
         <Text style={styles.category}>Category: {item.category}</Text>
         <Text style={styles.name}>Name: {item.name}</Text>
         <Text style={styles.description}>Description: {item.description}</Text>
-        <Text style={styles.price}>Price: ₹{item.price}</Text>
+        <Text style={styles.price}>Price: ₹{item.price}/Kg</Text>
       </View>
     </View>
   );
@@ -44,20 +44,20 @@ const SellerPage = ({ navigation, route }) => {
       {/* Footer */}
       <View style={styles.footer}>
         <TouchableOpacity style={styles.footerButton}>
-          <Icon name="view-grid-outline" size={24} color='#96d406'/>
+          <Icon name="view-grid-outline" size={24} color='#009900'/>
           <Text style={styles.footerText}>Catalogue</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Dashboard')} style={styles.footerButton}>
-          <Icon name="chart-bar" size={24} color='#96d406' />
+          <Icon name="chart-bar" size={24} color='#009900' />
           <Text style={styles.footerText}>Dashboard</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate('Chats')} style={styles.footerButton}>
-          <Icon name="chat-outline" size={24} color='#96d406' />
+          <Icon name="chat-outline" size={24} color='#009900' />
           <Text style={styles.footerText}>Chats</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Transactions')} style={styles.footerButton}>
-          <Icon name="account-outline" size={24} color='#96d406' />
+          <Icon name="account-outline" size={24} color='#009900' />
           <Text style={styles.footerText}>Transactions</Text>
         </TouchableOpacity>
 
@@ -113,19 +113,19 @@ const styles = StyleSheet.create({
   },
   addNewItem:{ 
     backgroundColor: '#fff',
-    borderColor: '#96d406',
+    borderColor: '#009900',
     borderWidth: 2,
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center', // Center elements horizontally
     flexDirection: 'row', // Arrange icon and text horizontally
-    color:'#96d406',
+    color:'#009900',
     marginBottom: 10, // Ensure some space between the button and the footer
   },
   addNewItemText:{
     fontSize: 18,
-    color: '#96d406',
+    color: '#009900',
     fontWeight: 'bold',
     
   },
@@ -136,19 +136,19 @@ const styles = StyleSheet.create({
   },
   addNewItem:{ 
     backgroundColor: '#fff',
-    borderColor: '#96d406',
+    borderColor: '#009900',
     borderWidth: 2,
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center', // Center elements horizontally
     flexDirection: 'row', // Arrange icon and text horizontally
-    color:'#96d406',
+    color:'#009900',
     marginBottom: 10, // Ensure some space between the button and the footer
   },
   addNewItemText:{
     fontSize: 18,
-    color: '#96d406',
+    color: '#009900',
     fontWeight: 'bold',
     
   },
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   footerText: {
-    color: '#96d406',
+    color: '#009900',
     fontSize: 12,
     marginTop: 4,
   },

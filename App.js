@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, Pressable, StyleSheet, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
@@ -32,27 +32,48 @@ import PaymentOptions from './screens/Payments';
 import ChatWithFarmer from './screens/ChatWithFarmer';
 import ChatWithSeller from './screens/ChatWithCustomer';
 import ChatWithCustomer from './screens/ChatWithCustomer';
-import InboxPage from './screens/Inbox';
+import { styleProps } from 'react-native-web/dist/cjs/modules/forwardedProps';
+
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
+ 
+  const handleProfilePress = () => {
+    props.navigation.navigate('Profile'); 
+  };
+
   return (
     <DrawerContentScrollView {...props}>
+      {/* Profile section with icon and name */}
+      <TouchableOpacity style={styles.profileContainer} onPress={handleProfilePress}>
+        <View style={styles.profileImagePlaceholder}>
+          <Ionicons name="person-outline" size={40} color="#fff" />
+        </View>
+        <View style={styles.profileInfo}>
+          <Text style={styles.profileName}>Ramlal</Text>
+          <Text style={styles.profileNumber}>+91 9876543210</Text>
+        </View>
+      </TouchableOpacity>
+
+      {/* Drawer Item List */}
       <DrawerItemList {...props} />
+
+      {/* Logout Button */}
       <DrawerItem
         label="Logout"
         onPress={() => alert('Logging out')}
         icon={({ color, size }) => (
-          <Ionicons name="log-out-outline" size={size + 4} color={color} /> 
+          <Ionicons name="log-out-outline" size={size + 4} color={color} />
         )}
-        labelStyle={{ fontWeight: 'bold' }} 
-        style={{ marginTop: 'auto' }} 
+        labelStyle={{ fontWeight: 'bold' }}
+        style={{ marginTop: 'auto' }} // Place it at the bottom of the drawer
       />
     </DrawerContentScrollView>
   );
 }
+
 
 function HomeStack({ navigation }) {
   return (
@@ -66,10 +87,17 @@ function HomeStack({ navigation }) {
           </Pressable>
         ),
         headerRight: () => (
-          <Pressable onPress={() => navigation.navigate('Inbox')} style={{ paddingRight: 10 }}>
-            <Ionicons name="mail-outline" size={25} color='#ffffff' /> {/* Inbox Icon */}
+          <Pressable onPress={() => alert("Profile opened")} style={{ paddingRight: 10 }}>
+            <Ionicons name="notifications-outline" size={25} color='#ffffff' />
           </Pressable>
         ),
+
+        // headerTitle : () => (
+        //   <View style={styles.headerTitleContainer}>
+        //     <Text style={styles.headerTitle}>Hi Ramlal</Text>
+        //   </View> 
+
+        
       }}
     >
       <Stack.Screen name="Home" component={HomePage} options={{ title: "Welcome" }} />
@@ -92,18 +120,18 @@ function HomeStack({ navigation }) {
       <Stack.Screen name="Profile" component={ProfilePage} />
       <Stack.Screen name="Categories" component={CategoriesPage} />
       <Stack.Screen name="CategoryItemsPage" component={CategoryItemsPage} />
-      <Stack.Screen name="Inbox" component={InboxPage} />
+      
       <Stack.Screen 
-  name="LoadItem" 
-  component={LoadItem} 
-  options={({ route, navigation }) => ({
-    title: route.params?.productName || 'Load Item',
-    headerStyle: { backgroundColor: '#009900' },
-    headerTitleStyle: { color: '#ffffff' },
-    headerLeft: () => (
-      <Pressable onPress={() => navigation.goBack()} style={{paddingLeft: 1, paddingRight:7 }}>
-        <Ionicons name="arrow-back-outline" size={25} color="#ffffff" />
-      </Pressable>
+        name="LoadItem" 
+        component={LoadItem} 
+        options={({ route, navigation }) => ({
+          title: route.params?.productName || 'Load Item',
+          headerStyle: { backgroundColor: '#009900' },
+          headerTitleStyle: { color: '#ffffff' },
+          headerLeft: () => (
+            <Pressable onPress={() => navigation.goBack()} style={{paddingLeft: 1, paddingRight:7 }}>
+              <Ionicons name="arrow-back-outline" size={25} color="#ffffff" />
+            </Pressable>
     ),
   })}
 />
@@ -153,10 +181,10 @@ function SellerStack({ navigation }) {
       }}
     >
       <Stack.Screen 
-        name="SellerPage" 
+        name="Sell With KissanYukt" 
         component={SellerPage} 
         options={{
-          title: 'Seller Page',
+          title: 'Sell With KissanYukt',
           headerLeft: () => (
             <Pressable onPress={() => navigation.openDrawer()} style={{ paddingLeft: 1, paddingRight:7 }}>
               <Ionicons name="menu-outline" size={32} color='#ffffff' />
@@ -328,7 +356,7 @@ function AboutKissanYuktStack({ navigation }) {
   );
 }
 
-// Settings Stack Navigator
+
 function SettingsStack({ navigation }) {
   return (
     <Stack.Navigator
@@ -353,10 +381,11 @@ export default function App() {
     <CartProvider>
     <NavigationContainer>
       <Drawer.Navigator
+        drawerContent={props => <CustomDrawerContent {...props} />}
         screenOptions={{
           headerShown: false, 
-          drawerActiveBackgroundColor: '#ff888f',
-          drawerActiveTintColor: 'ff888f'
+          drawerActiveBackgroundColor: '#c6ff89',
+          drawerActiveTintColor: '498e00'
         }}
       >
         <Drawer.Screen 
@@ -378,7 +407,7 @@ export default function App() {
           }}
         />
         <Drawer.Screen 
-          name="SellerPage" 
+          name="Sell With KissanYukt" 
           component={SellerStack} 
           options={{
             drawerIcon: ({ color }) => (
@@ -464,3 +493,44 @@ export default function App() {
   );
   
 }
+
+const styles = StyleSheet.create({
+  profileContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 20,
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+  },
+  profileImagePlaceholder: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: '#96d406',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 15, // Space between the image and text
+  },
+  profileInfo: {
+    flex: 1, // Allow the text section to use the remaining space
+  },
+  profileName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  profileNumber: {
+    fontSize: 16,
+    color: '#666',
+  },
+  headerTitleContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headerTitle: {
+    fontSize: 22, // Increase this value to make the text larger
+    fontWeight: 'bold',
+    color: '#ffffff',
+  },
+});

@@ -17,17 +17,17 @@ export default function ProfilePage({ navigation }) {
         
         <View style={styles.userDetails}>
           <View style={styles.detailRow}>
-            <Ionicons name="location-outline" size={20} color="#96d406" style={styles.icon} />
+            <Ionicons name="location-outline" size={20} color="#009900" style={styles.icon} />
             <Text style={styles.detailText}>Hinjewadi, Pune-411057</Text>
           </View>
 
           <View style={styles.detailRow}>
-            <Ionicons name="call-outline" size={20} color="#96d406" style={styles.icon} />
+            <Ionicons name="call-outline" size={20} color="#009900" style={styles.icon} />
             <Text style={styles.detailText}>+91 9876543210</Text>
           </View>
 
           <View style={styles.detailRow}>
-            <Ionicons name="mail-outline" size={20} color="#96d406" style={styles.icon} />
+            <Ionicons name="mail-outline" size={20} color="#009900" style={styles.icon} />
             <Text style={styles.detailText}>ramlal@KissanYukt.com</Text>
           </View>
         </View>
@@ -35,7 +35,7 @@ export default function ProfilePage({ navigation }) {
 
      
       <TouchableOpacity style={styles.editButton}>
-        <Ionicons name="pencil-sharp" size={24} color="#96d406" style={styles.icon} />
+        <Ionicons name="pencil-sharp" size={24} color="#009900" style={styles.icon} />
         <Text style={styles.editButtonText}>Edit Profile</Text>
       </TouchableOpacity>
 
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   },
   editButton: {
     backgroundColor: '#fff',
-    borderColor: '#96d406',
+    borderColor: '#009900',
     borderWidth: 2,
     padding: 5,
     borderRadius: 5,
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   },
   editButtonText: {
     fontSize: 16,
-    color: '#96d406',
+    color: '#009900',
     fontWeight: 'bold',
     marginLeft: 5, // Add margin to separate the icon and text
   },
